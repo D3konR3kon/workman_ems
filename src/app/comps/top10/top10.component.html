@@ -1,0 +1,19 @@
+<!-- <div>
+    <h1>Countdown Timer</h1>
+    <p>{{ formatTime(countdown) }}</p>
+  </div> -->
+  <div>
+    <h1>Countdown Timer</h1>
+    <p>Redeemed Voucher: {{ redeemedVoucher }}</p>
+    <p>Countdown: {{ formatTime(countdown) }}</p>
+  </div>
+  <div>
+    <input type=" text" [(ngModel)]="voucherCode">
+  </div>
+  <hr>
+  <div>
+
+  </div>
+  
+  <button class="btn btn-block btn-primary" (click)="redeemVoucher()">click me </button>
+  

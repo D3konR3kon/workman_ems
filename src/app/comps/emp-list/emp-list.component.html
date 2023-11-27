@@ -1,0 +1,80 @@
+<div class="row justify-content-even my-4 ">
+    <div class="w-75">
+        <input class="search border" type="text" name="search" placeholder="Search by name" [(ngModel)]="searchTerm">
+    </div>
+    <div class="w-25 clearfix">
+        
+        <button class="btn dropdown-toggle material-symbols-outlined float-end" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="sort">Sort</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="sortBy('fname')">Name</a></li>
+            <li><a class="dropdown-item" (click)="sortBy('dept')">Dept.</a></li>
+            <li><a class="dropdown-item" (click)="sortBy('status')">Status</a></li>
+          </ul>
+    </div>
+    
+</div>
+
+<div class = "row justify-content-center">
+  <div class="col-4 text-center my-4">
+    <button class="btn btn-primary" routerLink="/add">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+        <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+      </svg>
+    </button>
+    
+  </div>
+</div>
+
+
+<table class="table rounded-corners border shadow table-hover">
+  <thead class="three rounded">
+    <tr id="first p-3 mx-2">
+      <th scope="col" class="headers">#</th>
+      <th scope="col" class="headers">First</th>
+      <th scope="col" class="headers">Last</th>
+      <th scope="col" class="headers">Dept.</th>
+      <th scope="col" class="headers">Status</th>
+      <th scope="col" class="headers"></th>
+    </tr>
+  </thead>
+  <tbody *ngIf="(emplist | filter: searchTerm).length; else noResults">
+    <tr *ngFor='let emp of sortedList | filter: searchTerm' class="border">
+      <th scope="row">{{ emp.emp_id }}</th>
+      <td>{{ emp.fname }}</td>
+      <td>{{ emp.lname }}</td>
+      <td>{{ emp.dept }}</td>
+      <td>
+        <select id="status">
+          <option value="active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </td>
+      <td class="">
+        <span class="material-symbols-outlined edit me-4" routerLink="/view">edit_square</span>
+        <span class="material-symbols-outlined del">delete_forever</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noResults>
+  <p>No results found.</p>
+</ng-template>
+
+<div class="sticky-sm-bottom mt-5">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" >1</a></li>
+          <li class="page-item"><a class="page-link" >2</a></li>
+          <li class="page-item"><a class="page-link" >3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+</div>

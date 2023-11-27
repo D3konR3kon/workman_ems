@@ -1,0 +1,33 @@
+
+<div class="bg-light border shadow">
+  <img src="../../../assets/Workman__3_-removebg-preview.png" alt="" class="my-2 ms-3">
+</div>
+
+
+<main class="container-fluid d-flex justify-content-center  border ">
+    <div class="shadow h-100 w-25 pt-5 text-center sidePanel">
+        
+      <button class=" shrink-border w-75 shadow " (click)="emplist()">
+        <h5>Employees</h5>
+      </button>
+      <button class=" shrink-border w-75 btn btn-block w-75 shadow align-content-center my-4" (click)="top10()">
+        <h5>Top 5</h5>
+      </button>
+      <button class=" shrink-border w-75 btn-block w-75 shadow align-content-center " (click)="about()">
+        <h5>About</h5>
+      </button>
+        
+        
+        
+        
+    </div>
+    <div class="w-75 px-3">
+      <ng-container *ngIf="selectedComponent">
+        <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
+      </ng-container>
+    
+        
+      
+        
+    </div>
+</main>

@@ -1,0 +1,37 @@
+label{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+    font-weight: 400;
+}
+.border{
+    border-radius: 20px;
+}
+.selection {
+   
+  }
+  
+  select {
+    appearance: none;
+    /* safari */
+    -webkit-appearance: none;
+    /* other styles for aesthetics */
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.675em 6em 0.675em .5em;
+    background-color: #f6f2f2;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
+  }
+  input{
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    
+
+  }
+  .form-control:focus{
+    border:1px solid rgb(192, 183, 238);
+    box-shadow:  10px 5px 5px rgb(252, 230, 237);
+    /* background-color: #f0f3f4; */
+  }
