@@ -1,6 +1,6 @@
 <div class="">
 <div class="bg-light border shadow">
-    <img src="../../../assets/Workman__3_-removebg-preview.png" alt="" class="my-2 ms-3">
+    <img src="../../../assets/Workman__3_-removebg-preview.png" alt="" class="my-2 ms-3" routerLink="/cpanel">
 </div>
   
   
@@ -74,9 +74,9 @@
                         <label for="inputPosition" class="form-label">Position</label>
                         <select id="inputPosition" formControlName="position">
                             <option value="">Select option</option>
-                            <option value="Software Dev">Software Developer</option>
-                            <option value="GM">General Manager</option>
-                            <option value="GM">Snr. Software Dev</option>
+                            <option value="Software Developer">Software Developer</option>
+                            <option value="General Manager">General Manager</option>
+                            <option value="Janitor">Cleaner</option>
                             
                         </select>
                         <div *ngIf="(myForm.value.position=='' && myForm.controls['position'].touched)"  >
@@ -98,7 +98,7 @@
                     </div>
                     <div class="col-4">
                     <label for="inputDate" class="form-label">Start date</label>
-                    <input type="date" class="form-control" id="inputDate" formControlName="start_date">
+                    <input type="date" class="form-control" id="inputDate" formControlName="start_date" min ="{{minStartDate}}">
                     </div>
                     <div class="col-4">
                         <label for="inputAge" class="form-label">Age</label>
@@ -107,7 +107,7 @@
                     
                     <div class="col-4">
                     <label for="inputPhone" class="form-label">Phone #</label>
-                    <input type="tel" class="form-control" id="inputPhone" formControlName="cell_num">
+                    <input type="tel" class="form-control" id="inputPhone" formControlName="cell_number">
                     </div>
                     
                 
@@ -126,23 +126,19 @@
                         <select id="inputDept" formControlName="dept">
                             <option value="Finance">Finance</option>
                             <option value="IT">IT</option>
-                            <option value="IT">Marketing</option>
+                            <option value="Marketing">Marketing</option>
                             
                         </select>
                     </div>
                     <div class="col-md-4 selection">
                         <label for="inputSex" class="form-label">Sex</label>
                         <select id="inputSex" formControlName="sex">
-                            <option value="Locum">Male</option>
-                            <option value="Permanent">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                             
                         </select>
                     </div>
                     
-                    <div class="col-md-4">
-                        <label for="inputPassword4" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" formControlName="password">
-                    </div>
                    
                     <div class="col-md-6">
                         <label for="inputAddress" class="form-label">Address</label>

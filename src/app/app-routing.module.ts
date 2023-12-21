@@ -7,7 +7,7 @@ import { AddComponent } from './comps/add/add.component';
 const routes: Routes = [
   {path: "cpanel", component: CPanelComponent},
   {path: "" ,redirectTo: "cpanel",pathMatch: 'full'},
-  {path: "view" ,component: ViewEmpComponent},
+  {path: "view/:emp_id" ,component: ViewEmpComponent},
   {path: "add" ,component: AddComponent},
   
   

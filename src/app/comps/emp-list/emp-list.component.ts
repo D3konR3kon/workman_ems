@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { timeout } from 'rxjs';
 import { EmployeesService } from 'src/app/shared/employees.service';
 import { Employee } from 'src/app/shared/models/employee';
 
@@ -13,26 +15,19 @@ export class EmpListComponent implements OnInit{
   sortField!: keyof Employee; // Track the current sort field
   sortDirection: string = 'asc'; // Track the current sort direction
 
-  // emplist: Employee[]=[
-  //   {fname: "Mark", lname: "Otto", age: 23, sex: "male", email: "example@gmail.com", id: 123456789101, emp_id: 1,dept:"Finance",start_date: '2017-03-04', salary: 2000, status:"Active",contract:"Casual", position:"Junior Software Engineer", address:"5555 Joe Doe Str, NY 8000", perfomance: 0 },
-  //   {fname: "John", lname: "Otto", age: 23, sex: "male", email: "example@gmail.com", id: 123456789101, emp_id: 2,dept:"IT",start_date: '2017-03-04', salary: 2000, status:"Active",contract:"Casual", position:"Junior Software Engineer", address:"5555 Joe Doe Str, NY 8000", perfomance: 0 },
-  //   {fname: "Anthony", lname: "Otto", age: 23, sex: "male", email: "example@gmail.com", id: 123456789101, emp_id: 3,dept:"IT",start_date: '2017-03-04', salary: 2000, status:"Active",contract:"Casual", position:"Junior Software Engineer", address:"5555 Joe Doe Str, NY 8000", perfomance: 0 },
-  //   {fname: "Greg", lname: "Johnson", age: 23, sex: "male", email: "example@gmail.com", id: 123456789101, emp_id: 4,dept:"IT",start_date: '2017-03-04', salary: 2000, status:"Active",contract:"Casual", position:"Junior Software Engineer", address:"5555 Joe Doe Str, NY 8000", perfomance: 0 },
-    
-  // ]
+  
   emplist: Employee[] = []
 
 
-  constructor(private empService: EmployeesService) {
-    // Initialize your employee list here
+  constructor(private empService: EmployeesService, private router: Router) {
     
-   this.getAll()
+   //this.getAll()
   }
   
   ngOnInit(): void {
 
-     //this.getAll()
-     this.sortList()
+     this.getAll()
+     
   }
 
   getAll(){
@@ -45,6 +40,25 @@ export class EmpListComponent implements OnInit{
         console.log(err)
       }
     })
+  }
+
+  deleteOne(emp_id:any){
+    let confirm = false
+    if(confirm){
+      
+      this.empService.removeOne(emp_id).subscribe({
+      next: (results)=>{
+        console.log(results)
+        
+        this.ngOnInit()
+      },
+      error: (err)=>{
+        console.log("The following error occured!", err )
+      }
+    })
+    }
+    
+
   }
 
   sortBy(field: any) {

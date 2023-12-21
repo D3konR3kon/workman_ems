@@ -1,11 +1,10 @@
 export interface Employee {
+    emp_id: number,
     fname: string,
     lname: string,
     sex: string,
     age: number,
-    id: number,
     dept: string,
-    emp_id: number
     email: string,
     status: string,
     salary: number
@@ -13,5 +12,6 @@ export interface Employee {
     start_date: string,
     position: string,
     contract: string,
-    perfomance: number
+    created: Date
+  
 }

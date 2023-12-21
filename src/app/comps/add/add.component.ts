@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, EmailValidator } from '@angular/forms';
+import { EmployeesService } from 'src/app/shared/employees.service';
 
 @Component({
   selector: 'app-add',
@@ -11,8 +12,9 @@ export class AddComponent implements OnInit{
   submitted= false;
   success = "none"
   myForm:FormGroup
+  minStartDate = new Date().toJSON().slice(0,10)
   
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private empService: EmployeesService) {
     this.myForm =this.formBuilder.group({
       fname: ['',[Validators.required ,Validators.minLength(2)]],
       lname: ['',[Validators.required, Validators.minLength(2)]],
@@ -26,21 +28,29 @@ export class AddComponent implements OnInit{
       position: ['',[Validators.required,  Validators.minLength(2)]],
       contract: ['',[Validators.required,  Validators.minLength(2)]],
       start_date: ['',[Validators.required, Validators.minLength(2)]],
-      cell_num: ['',[ Validators.required, Validators.minLength(2)]],
+      cell_number: ['',[ Validators.required, Validators.minLength(2)]],
       address: ['',[Validators.required, Validators.minLength(2)]],
-      password: ['',[Validators.required, Validators.minLength(5)]],
       
     });
   }
   ngOnInit(): void {
-    
+    console.log(this.minStartDate)
   }
   onSubmit() {
     // TODO: Use EventEmitter with form value
     
+    const body = {}
     if(this.myForm.value.fname != ""){
-      console.log(this.myForm.valid)
+      console.log(this.myForm.value)
       this.submitted = true
+      this.empService.create(this.myForm.value).subscribe({
+        next: (data)=>{
+          console.log(data)
+        },
+        error:(err)=>{
+          console.log(err.stack)
+        }
+      })
     }
     setTimeout(()=>{
       this.submitted = false

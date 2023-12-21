@@ -23,16 +23,24 @@ table.rounded-corners {
     overflow: hidden;
   }
  
-   
+.sr{
+    height: 2rem;
+    display: inline-block;
+    line-height: 1.8rem;
+
+    
+}
 .search{
     border-radius: 5px ;
     font-size: 0,1em;
+
 }
+
 input{
     width: 50%;
     font-size: 14px;
     border: 1px solid #add8e6;
-    border-radius: 5px !important;
+    border-radius: 0 5px 5px 0px !important;
     line-height: 1.5rem;
     height: 2rem;
     padding-left: 5px;
@@ -95,4 +103,13 @@ tbody tr{
     background-color: red;
     border-radius: 2px;
 
+}
+.rm{
+    font-family: sans-serif;
+}
+.sort{
+    padding: 0;
+    padding-bottom: 0;
+    border: none;
+    background:none;
 }

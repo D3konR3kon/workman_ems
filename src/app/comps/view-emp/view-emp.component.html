@@ -1,91 +1,180 @@
-<div class="container d-flex justify-content-center">
+<div class="">
+  <div class="bg-light border shadow">
+      <img src="../../../assets/Workman__3_-removebg-preview.png" alt="" class="my-2 ms-3">
+  </div>
     
-    <div class="w-25 border shadow h-100">
-        some content
-    </div>
-    <div class=" w-75 border shadow p-5 my-4 border-primary">
-        <h4 class="text-center mb-2">EMP001</h4>
-<form class="row g-3 mt-3">
-    <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">First Name</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Last Name</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
-    <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail4">
-      </div>
+    
+    <main class="container-fluid d-flex justify-content-center  h-100">
+        <div class=" w-15 pt-5 text-center">
+            
+          <!-- <button class=" shrink-border w-75 shadow " (click)="emplist()">
+            <h5>Employees</h5>
+          </button>
+          <button class=" shrink-border w-75 btn btn-block w-75 shadow align-content-center my-4" (click)="top10()">
+            <h5>Top 5</h5>
+          </button>
+          <button class=" shrink-border w-75 btn-block w-75 shadow align-content-center " (click)="about()">
+            <h5>About</h5>
+          </button> -->
+            
+            
+            
+            
+        </div>
+        <div class="w-75  mx-auto mt-2 rounded shadow h-80 cb">
       
-      <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">ID Number</label>
-        <input type="email" class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-md-4">
-        <label for="inputPassword4" class="form-label">Salary</label>
-        <input type="password" class="form-control" id="inputPassword4">
-      </div>
-      <div class="col-md-4">
-        <label for="inputPosition" class="form-label">Position</label>
-        <input type="text" class="form-control" id="inputPosition">
-      </div>
-      <div class="col-md-4">
-        <label for="inputStatus" class="form-label">Status</label>
-        <input type="password" class="form-control" id="inputPassword4">
-      </div>
-    <div class="col-4">
-      <label for="inputStartDate" class="form-label">Start date</label>
-      <input type="date" class="form-control" id="inputDate" >
-    </div>
-      
-    <div class="col-4">
-      <label for="inputAddress2" class="form-label">Phone #</label>
-      <input type="tel" class="form-control" id="inputPhone">
-    </div>
-    <div class="col-4">
-      <label for="inputCity" class="form-label">Perfomance</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">Address</label>
-        <input type="text" class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword4">
-      </div>
-     
-    <div class="col-md-4 selection">
-        <label for="inputContract" class="form-label">Contract</label>
-        <select id="inputContract">
-            <option value="">Select option</option>
-            <option value="Locum">Locum</option>
-            <option value="Permanent">Permanent</option>
-            <option value="Casual">Casual</option>
+          
+          <div class="container d-flex justify-content-center h-80">
+              <div class=" w-100 border shado p-3 my-2 rounded cb">
+                      <div class="text-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                      </svg>
+                      </div>
+                     
+                  <form [formGroup]="myForm" class="row g-3 mt-3 mx-auto" (ngSubmit)="updateEmp()" *ngIf="employee">
+                      <div class="col-md-4">
+                          <label for="inputName" class="form-label" >First Name</label>
+                          <input type="text" class="form-control" id="inputName" formControlName="fname" >
+                          <div>
+  
+                          </div>
+                              <div *ngIf="(myForm.value.fname=='' && myForm.controls['fname'].touched)"  >
+                              <p class="border text-center text-danger">Name is required</p>
+                              </div>
+                      </div>
+                      <div class="col-md-4">
+                      <label for="inputLname" class="form-label">Last Name</label>
+                      <input type="text" class="form-control" id="inputLname" formControlName="lname">
+                      </div>
+                      <div class="col-md-4">
+                          <label for="inputEmail4" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="inputEmail4" formControlName="email">
+                          <div *ngIf="(myForm.value.email=='' && myForm.controls['email'].touched)"  >
+                              <p class="border text-center text-danger">Email is required</p>
+                              </div>
+                      </div>
+                      
+                      <div class="col-md-4">
+                          <label for="inputID" class="form-label">ID Number</label>
+                          <input type="number" class="form-control" id="inputID" formControlName="id_number">
+                          <div *ngIf="(myForm.value.id_number=='' && myForm.controls['id_number'].touched)"  >
+                              <p class="border text-center text-danger">ID is required</p>
+                              </div>
+                      </div>
+                      <div class="col-md-4">
+                          <label for="inputSalary" class="form-label">Salary</label>
+                          <input type="number" class="form-control" id="inputSalary" formControlName="salary">
+                          <div *ngIf="(myForm.value.salary=='' && myForm.controls['salary'].touched)"  >
+                              <p class="border text-center text-danger">Age is required</p>
+                              </div>
+                      </div>
+                      <div class="col-md-4">
+                          <label for="inputPosition" class="form-label">Position</label>
+                          <select id="inputPosition" formControlName="position">
+                              <option value="">Select option</option>
+                              <option value="Software Developer">Software Developer</option>
+                              <option value="General Manager">General Manager</option>
+                              <option value="Snr. Software Dev">Snr. Software Dev</option>
+                              
+                          </select>
+                          <div *ngIf="(myForm.value.position=='' && myForm.controls['position'].touched)"  >
+                              <p class="border text-center text-danger">Position is required</p>
+                              </div>
+                      </div>
+                      <div class="col-md-4">
+                          <label for="inputStatus" class="form-label">Status</label>
+                          <select id="inputStatus" formControlName="status">
+                              <option value="">Select option</option>
+                              <option value="Active">Active</option>
+                              <option value="Inactive">Inactive</option>
+                             
+                              
+                          </select>
+                          <div *ngIf="(myForm.value.status=='' && myForm.controls['status'].touched)"  >
+                              <p class="border text-center text-danger">Name is required</p>
+                              </div>
+                      </div>
+                      <div class="col-4">
+                      <label for="inputDate" class="form-label">Start date</label>
+                      <input type="date" class="form-control" id="inputDate" pattern="" formControlName="start_date">
+                      </div>
+                      <div class="col-4">
+                          <label for="inputAge" class="form-label">Age</label>
+                          <input type="number" class="form-control" id="inputAge" formControlName="age">
+                      </div>
+                      
+                      <div class="col-4">
+                      <label for="inputPhone" class="form-label">Phone #</label>
+                      <input type="tel" class="form-control" id="inputPhone" formControlName="cell_number">
+                      </div>
+                      
+                  
+                      <div class="col-md-4 selection">
+                          <label for="inputContract" class="form-label">Contract</label>
+                          <select id="inputContract" formControlName="contract">
+                              <option value="">Select option</option>
+                              <option value="Locum">Locum</option>
+                              <option value="Permanent">Permanent</option>
+                              <option value="Casual">Casual</option>
+                              
+                          </select>
+                      </div>
+                      <div class="col-md-4 selection">
+                          <label for="inputDept" class="form-label">Dept.</label>
+                          <select id="inputDept" formControlName="dept">
+                              <option value="Finance">Finance</option>
+                              <option value="IT">IT</option>
+                              <option value="Marketing">Marketing</option>
+                              
+                          </select>
+                      </div>
+                      <div class="col-md-4 selection">
+                          <label for="inputSex" class="form-label">Sex</label>
+                          <select id="inputSex" formControlName="sex">
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                              
+                          </select>
+                      </div>
+                      
+                     
+                      <div class="col-md-6">
+                          <label for="inputAddress" class="form-label">Address</label>
+                          <input type="text" class="form-control" id="inputAddress" formControlName="address">
+                      </div>
+  
+                      <div class="successToaster pt-3" *ngIf="submitted" [ngClass]="success">
+                          <p class="text-center">Employee updated succeesfully!</p>
+                      </div>
+                     
+                      <div class="footer text-center">
+                          <button class="btn btn-block btn-primary savebtn" type="submit">save</button> 
+                          <button class="btn btn-block btn-primary clearbtn" type="submit" (click)="clearinputs()">Clear</button> 
+                         
+                      </div>
+                      
+                  </form>
+                  <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                      <div class="d-flex">
+                        <div class="toast-body">
+                        Hello, world! This is a toast message.
+                       </div>
+                        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                      </div>
+                    </div>
+              </div>
+              
+          </div>
+          
+        
             
-          </select>
-      </div>
-      <div class="col-md-4 selection">
-        <label for="inputDept" class="form-label">Dept.</label>
-        <select id="inputDept">
-            <option value="Finance">Finance</option>
-            <option value="IT">IT</option>
-            <option value="IT">Marketing</option>
+          
             
-          </select>
-      </div>
-      <div class="col-md-4 selection">
-        <label for="inputPassword4" class="form-label">Sex</label>
-        <select id="inputSex">
-            <option value="Locum">Male</option>
-            <option value="Permanent">Female</option>
-            
-          </select>
-      </div>
-    
-  </form>
+        </div>
+        
+    </main>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#e7008a" fill-opacity="1.1" d="M0,96L60,112C120,128,240,160,360,154.7C480,149,600,107,720,117.3C840,128,960,192,1080,213.3C1200,235,1320,213,1380,202.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+   
     </div>
-    
-</div>
