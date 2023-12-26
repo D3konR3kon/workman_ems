@@ -1,6 +1,17 @@
 <div class="">
 <div class="bg-light border shadow">
-    <img src="../../../assets/Workman__3_-removebg-preview.png" alt="" class="my-2 ms-3" routerLink="/cpanel">
+    <div class="bg-light border shadow d-flex justify-content-around">
+        <div class=" w-50">
+            <img src="../../../assets/Workman__3_-removebg-preview.png" alt="" class="my-2 ms-3">
+        </div>
+          
+          <div class=" py-4 me-4" routerLink="/cpanel">
+            <span class="border hm text-center py-2 "><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-house-fill" viewBox="0 0 16 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+              </svg></span>
+          </div>
+      </div>
 </div>
   
   
@@ -72,11 +83,14 @@
                     </div>
                     <div class="col-md-4">
                         <label for="inputPosition" class="form-label">Position</label>
-                        <select id="inputPosition" formControlName="position">
+                        <select id="inputPosition" formControlName="pos_id">
                             <option value="">Select option</option>
-                            <option value="Software Developer">Software Developer</option>
-                            <option value="General Manager">General Manager</option>
-                            <option value="Janitor">Cleaner</option>
+                            <option value="1">Jnr Software Developer</option>
+                            <option value="2">CFO</option>
+                            <option value="3">Cleaner</option>
+                            <option value="4">Admin Manager</option>
+                            
+
                             
                         </select>
                         <div *ngIf="(myForm.value.position=='' && myForm.controls['position'].touched)"  >
@@ -123,10 +137,12 @@
                     </div>
                     <div class="col-md-4 selection">
                         <label for="inputDept" class="form-label">Dept.</label>
-                        <select id="inputDept" formControlName="dept">
-                            <option value="Finance">Finance</option>
-                            <option value="IT">IT</option>
-                            <option value="Marketing">Marketing</option>
+                        <select id="inputDept" formControlName="dept_id">
+                            <option value="2">Finance</option>
+                            <option value="1">IT</option>
+                            <option value="3">Floor</option>
+                            <option value="4">HR</option>
+                            
                             
                         </select>
                     </div>
@@ -151,7 +167,7 @@
                    
                     <div class="footer text-center">
                         <button class="btn btn-block btn-primary savebtn" type="submit">save</button> 
-                        <button class="btn btn-block btn-primary clearbtn" type="submit" (click)="clearinputs()">Clear</button> 
+                        <button class="btn btn-block btn-primary clearbtn" type="reset" (click)="clearinputs()">Clear</button> 
                        
                     </div>
                     

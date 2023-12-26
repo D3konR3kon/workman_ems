@@ -35,7 +35,7 @@
 </div>
 
 
-<table class="table rounded-corners border shadow table-hover" *ngIf="emplist.length; else loading">
+<table class="table rounded-corners border shadow table-hover">
   <thead class="three rounded">
     <tr id="first p-3 mx-2">
       <th scope="col" class="headers">#</th>
@@ -46,20 +46,23 @@
       <th scope="col" class="headers">Actions</th>
     </tr>
   </thead>
-  <tbody *ngIf="(emplist | filter: searchTerm).length; else noResults">
-    <tr *ngFor='let emp of emplist | filter: searchTerm' class="border">
+  <tbody *ngIf="(emplist | sFilter: searchTerm).length; else noResults">
+    <tr *ngFor='let emp of emplist | sFilter: searchTerm; let i = index' class="border">
       <th scope="row">{{ emp.emp_id }}</th>
       <td>{{ emp.fname }}</td>
       <td>{{ emp.lname }}</td>
-      <td>{{ emp.dept }}</td>
+      <td>{{ emp.dept_name }}</td>
       <td>{{emp.status}}</td>
       <td class="">
         <span class="material-symbols-outlined edit me-4" routerLink="/view/{{emp.emp_id}}" >edit_square</span>
-        <span class="material-symbols-outlined del"   data-bs-toggle="modal" data-bs-target="#exampleModal">delete_forever</span>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <span class="material-symbols-outlined del"   data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getid(this, emp.emp_id)">delete_forever</span>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
           <div class="modal-dialog">
             <div class="modal-content">
-              
+              <div class="modal-header justify-content-center">
+               
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
               <div class="modal-body">
                 <form>
                   
@@ -75,7 +78,10 @@
               </div>
               <div class="modal-footer justify-content-center bg-light">
                 <button type="button" class="btn btn-primary me-2" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" (click)="deleteOne(emp.emp_id)">Delete</button>
+                <button type="button" class="btn btn-danger" (click)="deleteOne(this, obj_id)" data-bs-dismiss="modal" >Delete</button>
+                <div class="successToaster pt-3" *ngIf="submitted" [ngClass]="success">
+                  <p class="text-center">Employee updated succeesfully!</p>
+              </div>
               </div>
             </div>
           </div>
@@ -88,7 +94,7 @@
 <ng-template class="w-100 border" #noResults>
   <p class="p-3 text-center">No results found.</p>
 </ng-template>
-<ng-template class="w-100" #loading>
+<!-- <ng-template class="w-100" #loading>
   <p class="p-3 text-center">Fetching data...</p>
-</ng-template>
+</ng-template> -->
 

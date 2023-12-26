@@ -15,8 +15,10 @@ export class EmpListComponent implements OnInit{
   sortField!: keyof Employee; // Track the current sort field
   sortDirection: string = 'asc'; // Track the current sort direction
 
-  
+  obj_id:any
   emplist: Employee[] = []
+success: string|string[]|Set<string>|{ [klass: string]: any; }|null|undefined;
+submitted: any;
 
 
   constructor(private empService: EmployeesService, private router: Router) {
@@ -42,9 +44,12 @@ export class EmpListComponent implements OnInit{
     })
   }
 
-  deleteOne(emp_id:any){
-    let confirm = false
-    if(confirm){
+  getid(event:any,id:any){
+    this.obj_id = id
+    console.log(this.obj_id, event, "Here")
+  }
+  deleteOne(event:any, emp_id:any){
+    console.log(event,emp_id, this.obj_id)
       
       this.empService.removeOne(emp_id).subscribe({
       next: (results)=>{
@@ -56,7 +61,7 @@ export class EmpListComponent implements OnInit{
         console.log("The following error occured!", err )
       }
     })
-    }
+    
     
 
   }

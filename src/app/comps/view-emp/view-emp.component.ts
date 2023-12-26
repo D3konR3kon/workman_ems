@@ -26,7 +26,7 @@ export class ViewEmpComponent implements OnInit {
       email: ['',[Validators.required, Validators.minLength(2)]],
       age: ['', [Validators.required, Validators.minLength(2)]],
       status: ["", [Validators.required, Validators.minLength(2)]],
-      dept: ['',[Validators.required, Validators.minLength(2)]],
+      dept_name: ['',[Validators.required, Validators.minLength(2)]],
       salary: ['', [Validators.required, Validators.minLength(2)]],
       id_number: ['', [Validators.required, Validators.minLength(2)]],
       position: ['',[Validators.required,  Validators.minLength(2)]],

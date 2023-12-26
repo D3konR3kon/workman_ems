@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Employee } from './shared/models/employee';
 
 @Pipe({
-  name: 'filter'
+  name: 'sFilter'
 })
 export class FilterPipe implements PipeTransform {
 

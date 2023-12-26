@@ -22,10 +22,10 @@ export class AddComponent implements OnInit{
       email: ['',[Validators.required, Validators.minLength(2)]],
       age: ['', [Validators.required, Validators.minLength(2)]],
       status: ["", [Validators.required, Validators.minLength(2)]],
-      dept: ['',[Validators.required, Validators.minLength(2)]],
+      dept_id: [null,[Validators.required, Validators.minLength(2)]],
       salary: ['', [Validators.required, Validators.minLength(2)]],
       id_number: ['', [Validators.required, Validators.minLength(2)]],
-      position: ['',[Validators.required,  Validators.minLength(2)]],
+      pos_id: [null,[Validators.required,  Validators.minLength(2)]],
       contract: ['',[Validators.required,  Validators.minLength(2)]],
       start_date: ['',[Validators.required, Validators.minLength(2)]],
       cell_number: ['',[ Validators.required, Validators.minLength(2)]],
@@ -56,6 +56,8 @@ export class AddComponent implements OnInit{
       this.submitted = false
     },4000)
   }
+
+
   clearinputs(){
     this.myForm.reset()
   }

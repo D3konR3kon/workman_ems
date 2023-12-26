@@ -113,3 +113,7 @@ tbody tr{
     border: none;
     background:none;
 }
+.btn-close{
+    margin: 0;
+    border: 2px solid black
+}
