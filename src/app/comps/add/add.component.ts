@@ -13,6 +13,7 @@ export class AddComponent implements OnInit{
   success = "none"
   myForm:FormGroup
   minStartDate = new Date().toJSON().slice(0,10)
+  is_Error!: boolean;
   
   constructor(private formBuilder: FormBuilder, private empService: EmployeesService) {
     this.myForm =this.formBuilder.group({
@@ -42,13 +43,21 @@ export class AddComponent implements OnInit{
     const body = {}
     if(this.myForm.value.fname != ""){
       console.log(this.myForm.value)
-      this.submitted = true
+      
       this.empService.create(this.myForm.value).subscribe({
         next: (data)=>{
           console.log(data)
+          this.submitted = true
+          setTimeout(()=>{
+            this.submitted = false
+          },4000)
         },
         error:(err)=>{
-          console.log(err.stack)
+          this.is_Error = true;
+        console.log("Error message goes like this:", err.error, err)
+        setTimeout(()=>{
+          this.is_Error = false
+        },4000)
         }
       })
     }

@@ -11,9 +11,11 @@ import { Employee } from 'src/app/shared/models/employee';
 export class ViewEmpComponent implements OnInit { 
   submitted= false;
   success = "none"
+  onError = "none"
   myForm!:FormGroup
   employee!:Employee
   startDate:any
+  is_Error!: boolean;
   
   constructor(private formBuilder: FormBuilder, private empService: EmployeesService, private route: ActivatedRoute) {
     
@@ -26,10 +28,10 @@ export class ViewEmpComponent implements OnInit {
       email: ['',[Validators.required, Validators.minLength(2)]],
       age: ['', [Validators.required, Validators.minLength(2)]],
       status: ["", [Validators.required, Validators.minLength(2)]],
-      dept_name: ['',[Validators.required, Validators.minLength(2)]],
+      dept_id: ['',[Validators.required, Validators.minLength(2)]],
       salary: ['', [Validators.required, Validators.minLength(2)]],
       id_number: ['', [Validators.required, Validators.minLength(2)]],
-      position: ['',[Validators.required,  Validators.minLength(2)]],
+      pos_id: ['',[Validators.required,  Validators.minLength(2)]],
       contract: ['',[Validators.required,  Validators.minLength(2)]],
       start_date: [null,[Validators.required]],
       cell_number: ['',[ Validators.required, Validators.minLength(2)]],
@@ -60,9 +62,13 @@ export class ViewEmpComponent implements OnInit {
       this.submitted = false
     },4000)
   }
+
+
   clearinputs(){
     this.myForm.reset()
   }
+
+
   getEmp(id:any){
     this.empService.getOne(id).subscribe({
       next:(data)=>{
@@ -82,19 +88,29 @@ export class ViewEmpComponent implements OnInit {
 
   updateEmp(){
     const emp_id = this.route.snapshot.params['emp_id']
-    this.empService.update(emp_id, this.myForm.value).subscribe({
+    
+    this.empService.update(true, this.myForm.value).subscribe({
       next: (data)=>{
         console.log(data)
+        this.submitted = true
+        setTimeout(()=>{
+          this.submitted = false
+        },4000)
       },
       error: (err)=>{
-        console.log("Error message goes like this:", err)
+        this.is_Error = true;
+        console.log("Error message goes like this:", err.error, err)
+        setTimeout(()=>{
+          this.is_Error = false
+        },4000)
       }
     })
-    this.submitted = true
 
-    setTimeout(()=>{
-      this.submitted = false
-    },4000)
+    // setTimeout(()=>{
+    //   this.submitted = false
+    // },4000)
 
   }
+
+ 
 }

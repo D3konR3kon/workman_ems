@@ -158,16 +158,60 @@ button {
 }
 .savebtn{
   background-color: blue;
-  border: 3px solid rgb(254, 254, 254);
+  /* border: 3px solid rgb(254, 254, 254); */
+    --v: 3px;
+    border: 1px solid rgb(2 125 67);
+    background: #00b09b;
+    background: -webkit-linear-gradient(to bottom, #96c93d, #00b09b);
+    background: linear-gradient(to bottom, #96c93d, #00b09b);
+    border-radius: var(--v);
+    /* width: 5rem; */
+    /* line-height: 3rem; */
+    outline-offset: 1px;
+    outline: 1px solid rgb(2 125 67);
+    color: #027d43;
+    perspective-origin: 3px 9px;
 }
+
 .clearbtn{
-  background-color:#e7008a;
-  border: 3px solid rgb(254, 254, 254);
+  --v: 3px;
+  border: 1px solid rgb(2 125 67);
+    background: #b05e00;
+    background: -webkit-linear-gradient(to bottom, #c93d3d, #c93d3d);
+    background: linear-gradient(to bottom, #c93d3d, #c93d3d);
+    border-radius: var(--v);
+    /* width: 5rem; */
+    /* line-height: 3rem; */
+    outline-offset: 1px;
+    outline: 1px solid rgb(179, 46, 46);
+    color: #790101;
+    perspective-origin: 3px 9px;
  
 }
+.savebtn:hover, .clearbtn:hover{
+  color: #ffffff;
+  outline: 2px solid rgb(255, 255, 255);
+  font-weight: bolder;
+}
+/* .clearbtn:hover{
+  color: #ffffff;
+  outline: 1px solid rgb(255, 255, 255);
+  font-weight: bolder;
+
+} */
+
 .successToaster{
-  border: 3px solid rgb(254, 254, 254);
+  border: 1px solid rgb(254, 254, 254);
   background-color: rgba(6, 139, 6, 0.761);
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  display: block;
+}
+.errorToaster{
+  border: 1px solid rgb(254, 254, 254);
+  background-color: rgba(235, 84, 84, 0.761);
   color: #fff;
   text-transform: uppercase;
   font-size: 1.2rem;

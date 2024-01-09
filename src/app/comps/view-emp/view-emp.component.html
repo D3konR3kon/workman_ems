@@ -45,7 +45,7 @@
                   <form [formGroup]="myForm" class="row g-3 mt-3 mx-auto" (ngSubmit)="updateEmp()" *ngIf="employee">
                       <div class="col-md-4">
                           <label for="inputName" class="form-label" >First Name</label>
-                          <input type="text" class="form-control" id="inputName" formControlName="fname" >
+                          <input type="text" class="form-control" id="inputName" formControlName="fname" [value]="" >
                           <div>
   
                           </div>
@@ -81,16 +81,12 @@
                       </div>
                       <div class="col-md-4">
                           <label for="inputPosition" class="form-label">Position</label>
-                          <select id="inputPosition" formControlName="position">
+                          <select id="inputPosition" formControlName="pos_id">
                               <option value="">Select option</option>
-                              <option value="Software Developer">Software Developer</option>
-                              <option value="General Manager">General Manager</option>
-                              <option value="Snr. Software Dev">Snr. Software Dev</option>
-                              <option value="Cleaner">Cleaner</option>
-                              <option value="Admin Manager">Admin Manager</option>
-                              <option value="Jnr Software Developer">Jnr Software Developer</option>
-                              
-                              
+                              <option value="1">Jnr Software Developer</option>
+                              <option value="2">CFO</option>
+                              <option value="3">Cleaner</option>
+                              <option value="4">Admin Manager</option>
                           </select>
                           <div *ngIf="(myForm.value.position=='' && myForm.controls['position'].touched)"  >
                               <p class="border text-center text-danger">Position is required</p>
@@ -136,12 +132,12 @@
                       </div>
                       <div class="col-md-4 selection">
                           <label for="inputDept" class="form-label">Dept.</label>
-                          <select id="inputDept" formControlName="dept_name">
+                          <select id="inputDept" formControlName="dept_id">
                               <option value="Finance">Finance</option>
-                              <option value="IT">IT</option>
-                              <option value="Marketing">Marketing</option>
-                              <option value="Floor">Floor</option>
-                              <option value="HR">HR</option>
+                              <option value="1">IT</option>
+                              <option value="2">Finance</option>
+                              <option value="3">Floor</option>
+                              <option value="4" >HR</option>
                               
                               
                               
@@ -150,7 +146,7 @@
                       <div class="col-md-4 selection">
                           <label for="inputSex" class="form-label">Sex</label>
                           <select id="inputSex" formControlName="sex">
-                              <option value="male">Male</option>
+                              <option value="Male">Male</option>
                               <option value="Female">Female</option>
                               
                           </select>
@@ -165,10 +161,14 @@
                       <div class="successToaster pt-3" *ngIf="submitted" [ngClass]="success">
                           <p class="text-center">Employee updated succeesfully!</p>
                       </div>
-                     
-                      <div class="footer text-center">
+                      <div class="errorToaster pt-3" *ngIf="is_Error" [ngClass]="onError" >
+                            <p class="text-center">An error occured could not update employee!</p>
+                      </div>
+
+                      
+                      <div class="footer text-center mt-4">
                           <button class="btn btn-block btn-primary savebtn" type="submit">save</button> 
-                          <button class="btn btn-block btn-primary clearbtn" type="submit" (click)="clearinputs()">Clear</button> 
+                          <button class="btn btn-block btn-primary clearbtn" type="reset" (click)="clearinputs()">Clear</button> 
                          
                       </div>
                       
